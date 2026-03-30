@@ -1,0 +1,40 @@
+/* Zip Bundle Plugin Default Styling */
+.zip-bundle-container {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.zip-bundle-btn {
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 0.2s, outline 0.1s;
+}
+
+/* Accessibility: Visible focus state */
+.zip-bundle-btn:focus-visible {
+    outline: 2px solid var(--md-primary-fg-color);
+    outline-offset: 2px;
+}
+
+.zip-bundle-btn::before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    vertical-align: middle;
+    /* Use mask-image so the icon inherits the button's text color (works on light + dark) */
+    background-color: currentColor;
+    -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M12,19L15,16H13V12H11V16H9L12,19Z"/></svg>');
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M12,19L15,16H13V12H11V16H9L12,19Z"/></svg>');
+    mask-size: contain;
+    mask-repeat: no-repeat;
+}
+
+.zip-bundle-btn:hover {
+    opacity: 0.8;
+}

@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mkdocs-zip-bundle-plugin"
+version = "0.1.0"
+description = "A MkDocs plugin to bundle specific code blocks into a downloadable ZIP or raw file."
+readme = "README.md"
+authors = [{ name = "Daemonless" }]
+license = { text = "MIT" }
+requires-python = ">=3.8"
+keywords = ["mkdocs", "zip", "bundle", "placeholders", "interactive"]
+dependencies = [
+    "mkdocs>=1.4.0",
+    "beautifulsoup4>=4.11.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/daemonless/mkdocs-zip-bundle-plugin"
+Repository = "https://github.com/daemonless/mkdocs-zip-bundle-plugin"
+"Bug Tracker" = "https://github.com/daemonless/mkdocs-zip-bundle-plugin/issues"
+
+[project.entry-points."mkdocs.plugins"]
+zip-bundle = "mkdocs_zip_bundle.plugin:ZipBundlePlugin"
