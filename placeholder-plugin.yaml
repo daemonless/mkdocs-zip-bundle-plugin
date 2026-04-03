@@ -1,0 +1,50 @@
+settings:
+  normal_prefix: "@"
+  normal_suffix: "@"
+  auto_placeholder_tables: false
+
+placeholders:
+  APP_NAME:
+    default: myapp
+    description: Application name
+  HOST_IP:
+    default: 192.168.1.100
+    description: Host IP address
+  PORT:
+    default: "8080"
+    description: Application port
+    validators:
+      - port_number
+  CONFIG_PATH:
+    default: /opt/myapp
+    description: Configuration directory path
+  TZ:
+    default: America/New_York
+    description: Timezone
+    values:
+      America/New_York: America/New_York
+      America/Chicago: America/Chicago
+      America/Denver: America/Denver
+      America/Los_Angeles: America/Los_Angeles
+      Europe/London: Europe/London
+      Europe/Berlin: Europe/Berlin
+      Asia/Tokyo: Asia/Tokyo
+      UTC: UTC
+  PUID:
+    default: "1000"
+    description: User ID
+    validators:
+      - port_number
+  PGID:
+    default: "1000"
+    description: Group ID
+    validators:
+      - port_number
+
+validators:
+  port_number:
+    name: Number
+    rules:
+      - regex: ^[0-9]+$
+        should_match: true
+        error_message: Must be a positive integer.

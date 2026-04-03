@@ -24,5 +24,8 @@ Repository = "https://github.com/daemonless/mkdocs-zip-bundle-plugin"
 [project.entry-points."mkdocs.plugins"]
 zip-bundle = "mkdocs_zip_bundle.plugin:ZipBundlePlugin"
 
+[tool.setuptools.packages.find]
+include = ["mkdocs_zip_bundle*"]
+
 [tool.setuptools.package-data]
 mkdocs_zip_bundle = ["assets/*"]

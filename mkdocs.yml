@@ -1,0 +1,35 @@
+site_name: mkdocs-zip-bundle-plugin
+site_url: https://mkdocs-zip-bundle-plugin.daemonless.io
+site_description: A MkDocs plugin that turns code blocks into downloadable ZIP bundles or raw files — placeholder-aware.
+repo_url: https://github.com/daemonless/mkdocs-zip-bundle-plugin
+repo_name: daemonless/mkdocs-zip-bundle-plugin
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.top
+    - content.code.copy
+    - search.suggest
+
+markdown_extensions:
+  - attr_list
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - tables
+  - md_in_html
+
+plugins:
+  - search
+  - zip-bundle:
+      include_jszip: true
+  - placeholder:
+      placeholder_file: placeholder-plugin.yaml
+
+nav:
+  - Home: index.md
+  - Configuration: configuration.md

@@ -4,6 +4,8 @@ A MkDocs plugin that turns code blocks into downloadable files. Tag any code blo
 
 Built to pair with [`mkdocs-placeholder-plugin`](https://github.com/six-two/mkdocs-placeholder-plugin): if your docs use interactive placeholders like `@PORT@`, the downloaded file will contain the user's actual values, not the defaults.
 
+**[Live demo → mkdocs-zip-bundle-plugin.daemonless.io](https://mkdocs-zip-bundle-plugin.daemonless.io)**
+
 ## Features
 
 - **Single file downloads** — one code block gets a direct raw file download, no ZIP needed
