@@ -1,6 +1,8 @@
 # mkdocs-zip-bundle-plugin
 
-Turn code blocks into **downloadable files** — directly from your MkDocs docs. Tag any fenced code block with a bundle ID and filename and the plugin injects a download button. Group multiple blocks under one ID to produce a **ZIP archive**. Pair with [`mkdocs-placeholder-plugin`](https://github.com/six-two/mkdocs-placeholder-plugin) and the downloaded files contain the reader's own values, not your defaults.
+Turn code blocks into **downloadable files** — for [MkDocs](https://www.mkdocs.org)/[Material](https://squidfunk.github.io/mkdocs-material/) **and** [Zensical](https://zensical.org). Tag any fenced code block with a bundle ID and filename and a download button is injected. Group multiple blocks under one ID to produce a **ZIP archive**. Pair with [`mkdocs-placeholder-plugin`](https://github.com/six-two/mkdocs-placeholder-plugin) and the downloaded files contain the reader's own values, not your defaults.
+
+> Using Zensical? Skip the plugin install — see [Using with Zensical](configuration.md#using-with-zensical).
 
 ---
 

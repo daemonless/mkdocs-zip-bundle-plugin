@@ -31,6 +31,42 @@ markdown_extensions:
   - pymdownx.superfences  # Recommended for reliable fenced code block attribute support
 ```
 
+## Using with Zensical
+
+[Zensical](https://zensical.org) isn't built on MkDocs and doesn't run MkDocs
+plugins, so there's no `plugins:` entry. Instead, load the three browser assets
+via `extra_javascript` / `extra_css` — the button injection and ZIP/download
+logic all run client-side, so the behavior is identical.
+
+```yaml
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js
+  - https://cdn.jsdelivr.net/gh/daemonless/mkdocs-zip-bundle-plugin@v0.2.0/mkdocs_zip_bundle/assets/zip-bundle.js
+extra_css:
+  - https://cdn.jsdelivr.net/gh/daemonless/mkdocs-zip-bundle-plugin@v0.2.0/mkdocs_zip_bundle/assets/zip-bundle.css
+```
+
+> The `@v0.2.0` pins to the release tag — bump it to match the version you want.
+
+The [markdown extensions](#required-markdown-extensions) and
+[code block attributes](#code-block-attributes) are exactly the same as the
+MkDocs setup. You don't install the Python package at all for Zensical — only
+the assets are needed.
+
+**Offline / air-gapped builds:** instead of the CDN URLs, copy the three files
+(`jszip.min.js`, `zip-bundle.js`, `zip-bundle.css`) from the package's
+`mkdocs_zip_bundle/assets/` directory into your project and reference them by
+local path.
+
+> **Placeholder integration is not (yet) confirmed on Zensical.** The
+> [live-values](#placeholder-integration) feature relies on
+> [`mkdocs-placeholder-plugin`](https://github.com/six-two/mkdocs-placeholder-plugin),
+> whose placeholder *wrapping* runs at MkDocs build time and does not run under
+> Zensical. Its author has decoupled the runtime and ships a standalone script,
+> but a Zensical-compatible setup isn't documented or verified. On Zensical,
+> zip-bundle downloads the code blocks **as written** — the ZIP/download itself
+> works fully; only the live-value substitution depends on placeholder support.
+
 ## Placeholder integration
 
 Pair with [`mkdocs-placeholder-plugin`](https://github.com/six-two/mkdocs-placeholder-plugin) so downloaded files contain the user's live edited values instead of defaults:

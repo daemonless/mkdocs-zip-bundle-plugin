@@ -1,8 +1,8 @@
 # mkdocs-zip-bundle-plugin
 
-A MkDocs plugin that turns code blocks into downloadable files. Tag any code block with a bundle ID and filename — the plugin injects a download button automatically. Works with single files (direct download) or multiple files (ZIP archive).
+Turn code blocks into downloadable files — for **MkDocs/Material** and **[Zensical](https://zensical.org)**. Tag any code block with a bundle ID and filename and a download button is injected automatically. Works with single files (direct download) or multiple files (ZIP archive).
 
-Built to pair with [`mkdocs-placeholder-plugin`](https://github.com/six-two/mkdocs-placeholder-plugin): if your docs use interactive placeholders like `@PORT@`, the downloaded file will contain the user's actual values, not the defaults.
+Built to pair with [`mkdocs-placeholder-plugin`](https://github.com/six-two/mkdocs-placeholder-plugin): if your docs use interactive placeholders like `@PORT@`, the downloaded file will contain the user's actual values, not the defaults. _(MkDocs/Material — see [Using with Zensical](https://mkdocs-zip-bundle-plugin.daemonless.io/configuration/#using-with-zensical) for the Zensical caveat.)_
 
 **[Live demo → mkdocs-zip-bundle-plugin.daemonless.io](https://mkdocs-zip-bundle-plugin.daemonless.io)**
 
