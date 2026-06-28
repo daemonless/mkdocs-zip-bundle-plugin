@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://mkdocs-zip-bundle-plugin.daemonless.io/configuration/">
       
       
-        <link rel="prev" href="..">
+        <link rel="prev" href="./..">
       
       
       
@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="zensical-0.0.46">
     
     
       
@@ -29,7 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+      
+      <link rel="stylesheet" href="../assets/stylesheets/modern/main.19d3147f.min.css">
       
       
 
@@ -43,16 +46,16 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
       
     
     
-      <link rel="stylesheet" href="../css/zip-bundle.css">
+      <link rel="stylesheet" href="../assets/zip-bundle/zip-bundle.css">
     
-      <link rel="stylesheet" href="../assets/javascripts/placeholder-plugin.css">
+      <link rel="stylesheet" href="../assets/stylesheets/placeholders.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
 
@@ -66,7 +69,7 @@
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
     <div data-md-component="skip">
       
         
@@ -84,15 +87,15 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="mkdocs-zip-bundle-plugin" class="md-header__button md-logo" aria-label="mkdocs-zip-bundle-plugin" data-md-component="logo">
+    <a href="./.." title="mkdocs-zip-bundle-plugin" class="md-header__button md-logo" aria-label="mkdocs-zip-bundle-plugin" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
 
     </a>
-    <label class="md-header__button md-icon" for="__drawer">
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -118,59 +121,30 @@
     
       
       
-        <label class="md-header__button md-icon" for="__search">
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
         </label>
-        <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-        </button>
-      </nav>
-      
-        <div class="md-search__suggest" data-md-component="search-suggest"></div>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
 </div>
       
     
-    
-      <div class="md-header__source">
+    <div class="md-header__source">
+      
         <a href="https://github.com/daemonless/mkdocs-zip-bundle-plugin" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     daemonless/mkdocs-zip-bundle-plugin
   </div>
 </a>
-      </div>
-    
+      
+    </div>
   </nav>
   
 </header>
@@ -191,11 +165,8 @@
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="./.." class="md-tabs__link">
         
-  
-  
-    
   
   Home
 
@@ -212,11 +183,8 @@
   
   
     <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+      <a href="././" class="md-tabs__link">
         
-  
-  
-    
   
   Configuration
 
@@ -247,10 +215,10 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="mkdocs-zip-bundle-plugin" class="md-nav__button md-logo" aria-label="mkdocs-zip-bundle-plugin" data-md-component="logo">
+    <a href="./.." title="mkdocs-zip-bundle-plugin" class="md-nav__button md-logo" aria-label="mkdocs-zip-bundle-plugin" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
 
     </a>
     mkdocs-zip-bundle-plugin
@@ -260,7 +228,7 @@
       <a href="https://github.com/daemonless/mkdocs-zip-bundle-plugin" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     daemonless/mkdocs-zip-bundle-plugin
@@ -277,15 +245,14 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="./.." class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Home
-  
+  Home
 
     
   </span>
@@ -307,7 +274,7 @@
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
       
       
         
@@ -320,8 +287,7 @@
   <span class="md-ellipsis">
     
   
-    Configuration
-  
+  Configuration
 
     
   </span>
@@ -331,15 +297,14 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="./" class="md-nav__link md-nav__link--active">
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    Configuration
-  
+  Configuration
 
     
   </span>
@@ -350,7 +315,8 @@
       
         
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
   
   
   
@@ -359,16 +325,16 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      On this page
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
   <a href="#plugin-options" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Plugin options
-      
+      </span>
     </span>
   </a>
   
@@ -377,9 +343,9 @@
         <li class="md-nav__item">
   <a href="#code-block-attributes" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Code block attributes
-      
+      </span>
     </span>
   </a>
   
@@ -388,9 +354,9 @@
         <li class="md-nav__item">
   <a href="#required-markdown-extensions" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Required markdown extensions
-      
+      </span>
     </span>
   </a>
   
@@ -399,20 +365,37 @@
         <li class="md-nav__item">
   <a href="#using-with-zensical" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Using with Zensical
-      
+      </span>
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Using with Zensical">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#placeholder-live-values-on-zensical" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Placeholder live-values on Zensical
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#placeholder-integration" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Placeholder integration
-      
+      </span>
     </span>
   </a>
   
@@ -436,10 +419,24 @@
               
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
                   <div class="md-sidebar__inner">
                     
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
   
   
   
@@ -448,16 +445,16 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      On this page
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
   <a href="#plugin-options" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Plugin options
-      
+      </span>
     </span>
   </a>
   
@@ -466,9 +463,9 @@
         <li class="md-nav__item">
   <a href="#code-block-attributes" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Code block attributes
-      
+      </span>
     </span>
   </a>
   
@@ -477,9 +474,9 @@
         <li class="md-nav__item">
   <a href="#required-markdown-extensions" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Required markdown extensions
-      
+      </span>
     </span>
   </a>
   
@@ -488,20 +485,37 @@
         <li class="md-nav__item">
   <a href="#using-with-zensical" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Using with Zensical
-      
+      </span>
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Using with Zensical">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#placeholder-live-values-on-zensical" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Placeholder live-values on Zensical
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#placeholder-integration" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Placeholder integration
-      
+      </span>
     </span>
   </a>
   
@@ -521,8 +535,6 @@
               <article class="md-content__inner md-typeset">
                 
                   
-
-
   
   
 
@@ -593,46 +605,77 @@
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pymdownx.superfences</span><span class="w">  </span><span class="c1"># Recommended for reliable fenced code block attribute support</span>
 </code></pre></div>
 <h2 id="using-with-zensical">Using with Zensical</h2>
-<p><a href="https://zensical.org">Zensical</a> isn't built on MkDocs and doesn't run MkDocs
-plugins, so there's no <code>plugins:</code> entry. Instead, load the three browser assets
-via <code>extra_javascript</code> / <code>extra_css</code> — the button injection and ZIP/download
-logic all run client-side, so the behavior is identical.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">extra_javascript</span><span class="p">:</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://cdn.jsdelivr.net/gh/daemonless/mkdocs-zip-bundle-plugin@v0.2.0/mkdocs_zip_bundle/assets/zip-bundle.js</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nt">extra_css</span><span class="p">:</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://cdn.jsdelivr.net/gh/daemonless/mkdocs-zip-bundle-plugin@v0.2.0/mkdocs_zip_bundle/assets/zip-bundle.css</span>
+<p><a href="https://zensical.org">Zensical</a> doesn't run MkDocs plugins, so there's no
+<code>plugins:</code> entry — you don't install the Python package at all. Instead, load
+the browser assets directly; the button injection and ZIP/download logic all run
+client-side, so the behavior is identical.</p>
+<p>In Zensical's native <a href="https://zensical.org/compatibility/configuration/"><code>zensical.toml</code></a>
+everything lives under a <code>[project]</code> scope:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># zensical.toml</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">[project]</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">extra_css</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="s2">&quot;https://cdn.jsdelivr.net/gh/daemonless/mkdocs-zip-bundle-plugin@v0.2.0/mkdocs_zip_bundle/assets/zip-bundle.css&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">]</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">extra_javascript</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="s2">&quot;https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span><span class="s2">&quot;https://cdn.jsdelivr.net/gh/daemonless/mkdocs-zip-bundle-plugin@v0.2.0/mkdocs_zip_bundle/assets/zip-bundle.js&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="p">]</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="c1"># attr_list is required so Zensical reads the data-zip-* attributes</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="k">[project.markdown_extensions.attr_list]</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="k">[project.markdown_extensions.pymdownx.superfences]</span>
 </code></pre></div>
 <blockquote>
 <p>The <code>@v0.2.0</code> pins to the release tag — bump it to match the version you want.</p>
 </blockquote>
-<p>The <a href="#required-markdown-extensions">markdown extensions</a> and
-<a href="#code-block-attributes">code block attributes</a> are exactly the same as the
-MkDocs setup. You don't install the Python package at all for Zensical — only
-the assets are needed.</p>
+<p>If you're migrating an existing project, Zensical also reads your current
+<code>mkdocs.yml</code> unchanged through its compatibility layer, so the
+<code>extra_javascript</code> / <code>extra_css</code> and <code>markdown_extensions</code> from the
+<a href="#required-markdown-extensions">MkDocs setup</a> work as-is — just drop the
+<code>plugins: - zip-bundle</code> entry, since the plugin doesn't run under Zensical.</p>
+<p>The <a href="#code-block-attributes">code block attributes</a> are identical to the MkDocs
+setup.</p>
 <p><strong>Offline / air-gapped builds:</strong> instead of the CDN URLs, copy the three files
 (<code>jszip.min.js</code>, <code>zip-bundle.js</code>, <code>zip-bundle.css</code>) from the package's
 <code>mkdocs_zip_bundle/assets/</code> directory into your project and reference them by
 local path.</p>
+<h3 id="placeholder-live-values-on-zensical">Placeholder live-values on Zensical</h3>
+<p>The <a href="#placeholder-integration">live-values</a> feature works on Zensical, but it
+needs <strong>one post-build step</strong>. The <code>@VAR@</code> <em>wrapping</em> normally done by
+<a href="https://github.com/six-two/mkdocs-placeholder-plugin"><code>mkdocs-placeholder-plugin</code></a>
+at MkDocs build time doesn't run under Zensical, so post-process the built site
+with the plugin's standalone CLI (shipped in <code>mkdocs-placeholder-plugin&gt;=0.7.0</code>):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>zensical<span class="w"> </span>build
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>markdown-placeholder-standalone<span class="w"> </span>site/<span class="w"> </span>--phase<span class="w"> </span>both<span class="w"> </span>-p<span class="w"> </span>placeholder-plugin.yaml
+</code></pre></div>
+<p>Use <code>--phase both</code> — it runs the mark-and-convert in a single pass over the
+rendered HTML. (The separate <code>--phase markdown</code> then <code>--phase html</code> flow does
+<strong>not</strong> work for editable placeholders: each invocation generates a different
+internal marker ID, so the HTML phase can't match the markdown phase.)</p>
+<p>The CLI writes two assets into the site — reference them in your config so they
+load on every page:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">[project]</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">extra_css</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;assets/stylesheets/placeholders.css&quot;</span><span class="w"> </span><span class="p">]</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">extra_javascript</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;assets/javascripts/placeholder-combined.js&quot;</span><span class="w"> </span><span class="p">]</span>
+</code></pre></div>
 <blockquote>
-<p><strong>Placeholder integration is not (yet) confirmed on Zensical.</strong> The
-<a href="#placeholder-integration">live-values</a> feature relies on
-<a href="https://github.com/six-two/mkdocs-placeholder-plugin"><code>mkdocs-placeholder-plugin</code></a>,
-whose placeholder <em>wrapping</em> runs at MkDocs build time and does not run under
-Zensical. Its author has decoupled the runtime and ships a standalone script,
-but a Zensical-compatible setup isn't documented or verified. On Zensical,
-zip-bundle downloads the code blocks <strong>as written</strong> — the ZIP/download itself
-works fully; only the live-value substitution depends on placeholder support.</p>
+<p><strong>Gotcha — quote <code>@VAR@</code> in YAML code blocks.</strong> A placeholder is only wrapped
+when <code>@VAR@</code> is a <em>contiguous</em> string in the rendered HTML. The YAML syntax
+highlighter splits unquoted values like <code>image: @REGISTRY@/app</code> (because <code>@</code>
+is a reserved YAML indicator), so the token stays literal. Quote it —
+<code>image: "@REGISTRY@/app"</code> — and it wraps correctly.</p>
 </blockquote>
 <h2 id="placeholder-integration">Placeholder integration</h2>
 <p>Pair with <a href="https://github.com/six-two/mkdocs-placeholder-plugin"><code>mkdocs-placeholder-plugin</code></a> so downloaded files contain the user's live edited values instead of defaults:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">plugins</span><span class="p">:</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">search</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zip-bundle</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">placeholder</span><span class="p">:</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">      </span><span class="nt">placeholder_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">placeholder-plugin.yaml</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">plugins</span><span class="p">:</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">search</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zip-bundle</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">placeholder</span><span class="p">:</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">      </span><span class="nt">placeholder_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">placeholder-plugin.yaml</span>
 </code></pre></div>
 <p>The download button captures the <strong>current rendered text</strong> of the code block at click time — whatever the user has typed into the placeholder inputs is what ends up in the file.</p>
+
+
 
 
 
@@ -655,7 +698,7 @@ works fully; only the live-value substitution depends on placeholder support.</p
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
   Back to top
 </button>
         
@@ -669,8 +712,8 @@ works fully; only the live-value substitution depends on placeholder support.</p
   
   
     Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
     </a>
   
 </div>
@@ -688,14 +731,14 @@ works fully; only the live-value substitution depends on placeholder support.</p
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.top", "content.code.copy", "search.suggest"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["navigation.tabs","navigation.top","content.code.copy","search.suggest"],"search":"../assets/javascripts/workers/search.b6b7e04f.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.ee611ef6.min.js"></script>
       
-        <script src="../javascripts/jszip.min.js"></script>
+        <script src="../assets/zip-bundle/jszip.min.js"></script>
       
-        <script src="../javascripts/zip-bundle.js"></script>
+        <script src="../assets/zip-bundle/zip-bundle.js"></script>
       
         <script src="../assets/javascripts/placeholder-combined.js"></script>
       
