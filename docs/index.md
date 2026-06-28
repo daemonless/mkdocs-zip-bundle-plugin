@@ -32,7 +32,7 @@ services:
 services:
   @APP_NAME@:
     image: ghcr.io/example/@APP_NAME@:latest
-    container_name: @APP_NAME@
+    container_name: "@APP_NAME@"
     environment:
       - PUID=@PUID@
       - PGID=@PGID@
@@ -40,7 +40,7 @@ services:
     ports:
       - "@PORT@:8080"
     volumes:
-      - @CONFIG_PATH@:/config
+      - "@CONFIG_PATH@:/config"
     restart: unless-stopped
 ```
 
@@ -70,7 +70,7 @@ Use the **same `data-zip-bundle` ID** on multiple blocks. The button appears aft
 services:
   @APP_NAME@:
     image: ghcr.io/example/@APP_NAME@:latest
-    container_name: @APP_NAME@
+    container_name: "@APP_NAME@"
     environment:
       - PUID=@PUID@
       - PGID=@PGID@
@@ -78,7 +78,7 @@ services:
     ports:
       - "@PORT@:8080"
     volumes:
-      - @CONFIG_PATH@:/config
+      - "@CONFIG_PATH@:/config"
     restart: unless-stopped
 ```
 
@@ -123,10 +123,10 @@ Use paths as filenames — the plugin creates the directory structure inside the
 
 ```yaml { data-zip-bundle="nested" data-zip-filename="config/app.yaml" }
 server:
-  host: @HOST_IP@
-  port: @PORT@
-  name: @APP_NAME@
-timezone: @TZ@
+  host: "@HOST_IP@"
+  port: "@PORT@"
+  name: "@APP_NAME@"
+timezone: "@TZ@"
 ```
 
 ```bash { data-zip-bundle="nested" data-zip-filename="scripts/setup.sh" }

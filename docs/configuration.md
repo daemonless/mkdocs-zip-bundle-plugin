@@ -33,39 +33,78 @@ markdown_extensions:
 
 ## Using with Zensical
 
-[Zensical](https://zensical.org) isn't built on MkDocs and doesn't run MkDocs
-plugins, so there's no `plugins:` entry. Instead, load the three browser assets
-via `extra_javascript` / `extra_css` — the button injection and ZIP/download
-logic all run client-side, so the behavior is identical.
+[Zensical](https://zensical.org) doesn't run MkDocs plugins, so there's no
+`plugins:` entry — you don't install the Python package at all. Instead, load
+the browser assets directly; the button injection and ZIP/download logic all run
+client-side, so the behavior is identical.
 
-```yaml
-extra_javascript:
-  - https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js
-  - https://cdn.jsdelivr.net/gh/daemonless/mkdocs-zip-bundle-plugin@v0.2.0/mkdocs_zip_bundle/assets/zip-bundle.js
-extra_css:
-  - https://cdn.jsdelivr.net/gh/daemonless/mkdocs-zip-bundle-plugin@v0.2.0/mkdocs_zip_bundle/assets/zip-bundle.css
+In Zensical's native [`zensical.toml`](https://zensical.org/compatibility/configuration/)
+everything lives under a `[project]` scope:
+
+```toml
+# zensical.toml
+[project]
+extra_css = [
+  "https://cdn.jsdelivr.net/gh/daemonless/mkdocs-zip-bundle-plugin@v0.2.0/mkdocs_zip_bundle/assets/zip-bundle.css",
+]
+extra_javascript = [
+  "https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js",
+  "https://cdn.jsdelivr.net/gh/daemonless/mkdocs-zip-bundle-plugin@v0.2.0/mkdocs_zip_bundle/assets/zip-bundle.js",
+]
+
+# attr_list is required so Zensical reads the data-zip-* attributes
+[project.markdown_extensions.attr_list]
+[project.markdown_extensions.pymdownx.superfences]
 ```
 
 > The `@v0.2.0` pins to the release tag — bump it to match the version you want.
 
-The [markdown extensions](#required-markdown-extensions) and
-[code block attributes](#code-block-attributes) are exactly the same as the
-MkDocs setup. You don't install the Python package at all for Zensical — only
-the assets are needed.
+If you're migrating an existing project, Zensical also reads your current
+`mkdocs.yml` unchanged through its compatibility layer, so the
+`extra_javascript` / `extra_css` and `markdown_extensions` from the
+[MkDocs setup](#required-markdown-extensions) work as-is — just drop the
+`plugins: - zip-bundle` entry, since the plugin doesn't run under Zensical.
+
+The [code block attributes](#code-block-attributes) are identical to the MkDocs
+setup.
 
 **Offline / air-gapped builds:** instead of the CDN URLs, copy the three files
 (`jszip.min.js`, `zip-bundle.js`, `zip-bundle.css`) from the package's
 `mkdocs_zip_bundle/assets/` directory into your project and reference them by
 local path.
 
-> **Placeholder integration is not (yet) confirmed on Zensical.** The
-> [live-values](#placeholder-integration) feature relies on
-> [`mkdocs-placeholder-plugin`](https://github.com/six-two/mkdocs-placeholder-plugin),
-> whose placeholder *wrapping* runs at MkDocs build time and does not run under
-> Zensical. Its author has decoupled the runtime and ships a standalone script,
-> but a Zensical-compatible setup isn't documented or verified. On Zensical,
-> zip-bundle downloads the code blocks **as written** — the ZIP/download itself
-> works fully; only the live-value substitution depends on placeholder support.
+### Placeholder live-values on Zensical
+
+The [live-values](#placeholder-integration) feature works on Zensical, but it
+needs **one post-build step**. The `@VAR@` *wrapping* normally done by
+[`mkdocs-placeholder-plugin`](https://github.com/six-two/mkdocs-placeholder-plugin)
+at MkDocs build time doesn't run under Zensical, so post-process the built site
+with the plugin's standalone CLI (shipped in `mkdocs-placeholder-plugin>=0.7.0`):
+
+```bash
+zensical build
+markdown-placeholder-standalone site/ --phase both -p placeholder-plugin.yaml
+```
+
+Use `--phase both` — it runs the mark-and-convert in a single pass over the
+rendered HTML. (The separate `--phase markdown` then `--phase html` flow does
+**not** work for editable placeholders: each invocation generates a different
+internal marker ID, so the HTML phase can't match the markdown phase.)
+
+The CLI writes two assets into the site — reference them in your config so they
+load on every page:
+
+```toml
+[project]
+extra_css = [ "assets/stylesheets/placeholders.css" ]
+extra_javascript = [ "assets/javascripts/placeholder-combined.js" ]
+```
+
+> **Gotcha — quote `@VAR@` in YAML code blocks.** A placeholder is only wrapped
+> when `@VAR@` is a *contiguous* string in the rendered HTML. The YAML syntax
+> highlighter splits unquoted values like `image: @REGISTRY@/app` (because `@`
+> is a reserved YAML indicator), so the token stays literal. Quote it —
+> `image: "@REGISTRY@/app"` — and it wraps correctly.
 
 ## Placeholder integration
 
