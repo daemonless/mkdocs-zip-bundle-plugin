@@ -45,11 +45,11 @@ everything lives under a `[project]` scope:
 # zensical.toml
 [project]
 extra_css = [
-  "https://cdn.jsdelivr.net/gh/daemonless/mkdocs-zip-bundle-plugin@v0.2.0/mkdocs_zip_bundle/assets/zip-bundle.css",
+  "https://cdn.jsdelivr.net/gh/daemonless/mkdocs-zip-bundle-plugin@v0.3.0/mkdocs_zip_bundle/assets/zip-bundle.css",
 ]
 extra_javascript = [
   "https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js",
-  "https://cdn.jsdelivr.net/gh/daemonless/mkdocs-zip-bundle-plugin@v0.2.0/mkdocs_zip_bundle/assets/zip-bundle.js",
+  "https://cdn.jsdelivr.net/gh/daemonless/mkdocs-zip-bundle-plugin@v0.3.0/mkdocs_zip_bundle/assets/zip-bundle.js",
 ]
 
 # attr_list is required so Zensical reads the data-zip-* attributes
@@ -57,7 +57,7 @@ extra_javascript = [
 [project.markdown_extensions.pymdownx.superfences]
 ```
 
-> The `@v0.2.0` pins to the release tag — bump it to match the version you want.
+> The `@v0.3.0` pins to the release tag — bump it to match the version you want.
 
 If you're migrating an existing project, Zensical also reads your current
 `mkdocs.yml` unchanged through its compatibility layer, so the
