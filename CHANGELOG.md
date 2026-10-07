@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.3.0 — 2026-10-07
+
+### Security
+- **Path Traversal / Zip Slip Prevention.** Replaced regex sanitization in both Python and JavaScript with segment-based path splitting. Correctly prevents bypasses such as `....//` resolving to `../` and strips Windows drive letters, dot-only sequences, and null bytes.
+
+### Fixed
+- **Clean Code Extraction.** Downloaded files no longer include line numbers when `pymdownx.highlight` has `linenums: true` enabled, or Material code annotation badges / clipboard button text.
+- **Selector Syntax Errors.** Safely escaped bundle IDs using `CSS.escape` in click handler query selectors to handle special characters.
+- **Preserve Empty Files.** Allowed intentional zero-byte and whitespace files (e.g. `__init__.py`, `.gitkeep`, `.env`) in multi-file ZIP bundles.
+- **Deterministic & Compressed ZIPs.** Enabled DEFLATE compression in JSZip and set fixed timestamps (`date: new Date(0)`) for reproducible ZIP archive downloads.
+
 ## 0.2.0 — 2026-05-30
 
 ### Added

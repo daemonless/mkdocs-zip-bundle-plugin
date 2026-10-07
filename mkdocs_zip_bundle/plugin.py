@@ -43,15 +43,22 @@ class ZipBundlePlugin(BasePlugin):
         """
         Sanitize filename to prevent path traversal while allowing subdirectories.
         """
-        # Replace backslashes with forward slashes for ZIP compatibility
-        filename = filename.replace('\\', '/')
-        # Remove any ".." segments to prevent traversal
-        filename = re.sub(r'\.\.(?=/|$)', '', filename)
-        # Remove any leading slashes
-        filename = re.sub(r'^/+', '', filename)
-        # Collapse multiple slashes
-        filename = re.sub(r'/+', '/', filename)
-        return filename.strip()
+        if not filename:
+            return ""
+        # Remove null bytes and normalize slashes
+        filename = filename.replace('\0', '').replace('\\', '/')
+        # Split into path components and clean each segment
+        parts = []
+        for part in filename.split('/'):
+            part = part.strip()
+            # Drop empty segments and any segment consisting only of dots (., .., ...)
+            if not part or re.fullmatch(r'\.+', part):
+                continue
+            # Strip Windows drive letters if leading (e.g. 'C:')
+            if len(part) == 2 and part[1] == ':' and part[0].isalpha():
+                continue
+            parts.append(part)
+        return '/'.join(parts)
 
     def _create_button(self, soup, bundle_id, elements):
         """
@@ -70,9 +77,9 @@ class ZipBundlePlugin(BasePlugin):
         if custom_label:
             btn.string = custom_label
         elif len(elements) == 1 and not force_zip:
-            filename = elements[0].get('data-zip-filename', 'file')
+            filename = elements[0].get('data-zip-filename') or 'file'
             # Extract only the base filename for the button label if it's a path
-            display_name = os.path.basename(filename)
+            display_name = os.path.basename(filename) or 'file'
             btn.string = f"Download {display_name}"
         else:
             label = bundle_id.replace('-', ' ').title()

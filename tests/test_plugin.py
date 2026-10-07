@@ -34,7 +34,20 @@ def test_sanitize_filename(plugin):
     assert plugin._sanitize_filename('some/../../path.txt') == 'some/path.txt'
     assert plugin._sanitize_filename('win\\path.txt') == 'win/path.txt'
     assert plugin._sanitize_filename('subdir/file.txt') == 'subdir/file.txt'
-    assert plugin._sanitize_filename('//double//slash//') == 'double/slash/'
+    assert plugin._sanitize_filename('//double//slash//') == 'double/slash'
+    # Traversal bypass attempts
+    assert plugin._sanitize_filename('....//test.txt') == 'test.txt'
+    assert plugin._sanitize_filename('....//....//etc/passwd') == 'etc/passwd'
+    assert plugin._sanitize_filename('a/b/../../../c') == 'a/b/c'
+    assert plugin._sanitize_filename('C:\\Windows\\System32\\cmd.exe') == 'Windows/System32/cmd.exe'
+    assert plugin._sanitize_filename('foo/./bar') == 'foo/bar'
+    assert plugin._sanitize_filename('\0secret.txt') == 'secret.txt'
+    # Empty and dot-only inputs
+    assert plugin._sanitize_filename('   ') == ''
+    assert plugin._sanitize_filename('') == ''
+    assert plugin._sanitize_filename('..') == ''
+    assert plugin._sanitize_filename('...') == ''
+    assert plugin._sanitize_filename(None) == ''
 
 
 # --- _create_button ---
@@ -48,6 +61,16 @@ def test_create_button_single(plugin):
     assert button.string == 'Download compose.yaml'
     assert button.get('type') == 'button'
     assert 'onclick' not in button.attrs
+
+
+def test_create_button_single_empty_filename(plugin):
+    """Empty or traversal-only filename should fall back safely to 'Download file'."""
+    soup = BeautifulSoup('', 'html.parser')
+    elements = [make_element(soup, {'data-zip-filename': ''})]
+    container = plugin._create_button(soup, 'my-bundle', elements)
+
+    button = container.find('button')
+    assert button.string == 'Download file'
 
 
 def test_create_button_single_subdir(plugin):
