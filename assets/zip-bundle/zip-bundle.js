@@ -5,12 +5,19 @@
 // so on MkDocs/Material (server-injected) this is a harmless no-op.
 
 function sanitizeFilename(filename) {
+    if (!filename) return '';
     // Match plugin._sanitize_filename: prevent path traversal, allow subdirs.
-    filename = filename.replace(/\\/g, '/');     // backslashes -> forward
-    filename = filename.replace(/\.\.(?=\/|$)/g, '');  // drop ".." segments
-    filename = filename.replace(/^\/+/, '');     // no leading slashes
-    filename = filename.replace(/\/+/g, '/');    // collapse slashes
-    return filename.trim();
+    filename = filename.replace(/\0/g, '').replace(/\\/g, '/');
+    const parts = [];
+    for (let part of filename.split('/')) {
+        part = part.trim();
+        // Drop empty parts and segments consisting only of dots (., .., ..., etc.)
+        if (!part || /^\.+$/.test(part)) continue;
+        // Strip Windows drive letters (e.g. C:)
+        if (/^[a-zA-Z]:$/.test(part)) continue;
+        parts.push(part);
+    }
+    return parts.join('/');
 }
 
 function titleCase(str) {
@@ -36,8 +43,9 @@ function buildButtonContainer(bundleId, elements) {
     if (customLabel) {
         btn.textContent = customLabel;
     } else if (elements.length === 1 && !forceZip) {
-        const filename = elements[0].getAttribute('data-zip-filename') || 'file';
-        const displayName = filename.split('/').pop();  // basename
+        const rawFilename = elements[0].getAttribute('data-zip-filename');
+        const filename = sanitizeFilename(rawFilename || '') || 'file';
+        const displayName = filename.split('/').pop() || 'file';  // basename
         btn.textContent = `Download ${displayName}`;
     } else {
         const label = titleCase(bundleId.replace(/-/g, ' '));
@@ -88,6 +96,14 @@ if (window.document$ && typeof window.document$.subscribe === 'function') {
 
 // ── Download handling ─────────────────────────────────────────────────
 
+function extractCodeContent(el) {
+    const codeEl = el.querySelector('code') || el;
+    const clone = codeEl.cloneNode(true);
+    // Strip line numbers, Material code annotations, and clipboard buttons
+    clone.querySelectorAll('.linenos, .lineno, .md-annotation, .md-clipboard').forEach(n => n.remove());
+    return clone.textContent;
+}
+
 document.addEventListener('click', function(e) {
     const btn = e.target.closest('.zip-bundle-btn[data-bundle-id]');
     if (btn) {
@@ -96,7 +112,8 @@ document.addEventListener('click', function(e) {
 });
 
 async function downloadZipBundle(bundleId) {
-    const elements = document.querySelectorAll(`[data-zip-bundle="${bundleId}"]`);
+    const escapedId = (window.CSS && CSS.escape) ? CSS.escape(bundleId) : bundleId.replace(/"/g, '\\"');
+    const elements = document.querySelectorAll(`[data-zip-bundle="${escapedId}"]`);
 
     if (elements.length === 0) {
         console.warn(`No elements found for bundle ID: ${bundleId}`);
@@ -108,9 +125,9 @@ async function downloadZipBundle(bundleId) {
     // If it's only one file AND we aren't forcing a ZIP, download it directly
     if (elements.length === 1 && !forceZip) {
         const el = elements[0];
-        const filename = el.getAttribute('data-zip-filename') || 'file';
-        const codeEl = el.querySelector('code') || el;
-        const content = codeEl.innerText;
+        const rawFilename = el.getAttribute('data-zip-filename');
+        const filename = sanitizeFilename(rawFilename || '') || 'file';
+        const content = extractCodeContent(el);
 
         // Ensure UTF-8 encoding
         const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
@@ -128,20 +145,18 @@ async function downloadZipBundle(bundleId) {
 
     const zip = new JSZip();
     elements.forEach(el => {
-        const filename = el.getAttribute('data-zip-filename') || 'unnamed-file';
-        const codeEl = el.querySelector('code') || el;
-        const content = codeEl.innerText;
+        const rawFilename = el.getAttribute('data-zip-filename');
+        const filename = sanitizeFilename(rawFilename || '') || 'unnamed-file';
+        const content = extractCodeContent(el);
 
-        // Skip empty files if they have no content
-        if (content.trim().length === 0) {
-            console.warn(`Skipping empty file: ${filename}`);
-            return;
-        }
-
-        zip.file(filename, content);
+        zip.file(filename, content, { date: new Date(0) });
     });
 
-    const blob = await zip.generateAsync({type: "blob"});
+    const blob = await zip.generateAsync({
+        type: "blob",
+        compression: "DEFLATE",
+        compressionOptions: { level: 6 }
+    });
     const url = URL.createObjectURL(blob);
     triggerDownload(url, `${bundleId}.zip`);
 }
